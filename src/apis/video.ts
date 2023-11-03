@@ -16,3 +16,21 @@ export function hotVideo() {
     method: "get",
   });
 }
+
+//获取视频详情
+export function videoDetail(params: any) {
+  return request({
+    url: "/video/detail",
+    method: "get",
+    params,
+  });
+}
+
+// 修改播放量
+export function playNum(params: any) {
+  return request({
+    url: "/video/playNum",
+    method: "get",
+    params,
+  });
+}

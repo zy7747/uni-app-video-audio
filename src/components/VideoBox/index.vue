@@ -1,25 +1,28 @@
 <!-- 视频盒子 -->
 <template>
-  <div class="videoBox">
+  <div class="videoBox" @click="videoView">
     <image
       style="width: 100%; height: 70%"
       mode="scaleToFill"
-      src="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg"
+      referrerPolicy="no-referrer"
+      :src="baseUrl + videoInfo.picture"
     >
     </image>
     <div style="width: 100%; height: 30%" class="videoInfo">
       <div class="title">
         {{ videoInfo.title }}
       </div>
-      <span class="author" :title="videoInfo.author">
+      <div class="author">
         {{ "作者：" + videoInfo.author }}
-      </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-defineProps({
+const baseUrl = import.meta.env.VITE_APP_BASE_API;
+
+const props = defineProps({
   videoInfo: {
     text: "视频信息",
     type: [Object],
@@ -29,14 +32,17 @@ defineProps({
   },
 });
 
-function videoView(videoInfo: any) {}
+function videoView() {
+  uni.navigateTo({
+    url: "/pages/videoPlayerView/index?id=" + props.videoInfo.id,
+  });
+}
 </script>
 
 <style lang="scss" scoped>
 .videoBox {
-  width: 175px;
-  height: 175px;
   margin: 5px;
+  height: 175px;
   border-radius: 3px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   .videoInfo {

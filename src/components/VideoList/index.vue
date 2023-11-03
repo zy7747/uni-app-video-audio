@@ -24,7 +24,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .videoList {
-  display: flex;
-  flex-wrap: wrap;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 </style>

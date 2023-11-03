@@ -1,21 +1,15 @@
 // 请求拦截
+const baseUrl = import.meta.env.VITE_APP_BASE_API;
+
 function service(params: any) {
   return new Promise((resolve, reject) => {
-    uni.addInterceptor("request", {
-      invoke(args) {
-        // request 触发前拼接 url
-        // args.url = "http://127.0.0.1:8080" + args.url;
-      },
-      success(args) {},
-      fail(err) {},
-      complete(res) {},
-    });
-
     uni.request({
       ...params,
-      url: "http://127.0.0.1:8080" + params.url,
+      url: baseUrl + params.url,
+      //url: "https://organic-unlikely-garfish.ngrok-free.app" + params.url,
+      data: params.params,
       header: {
-        //自定义请求头信息
+        "ngrok-skip-browser-warning": 69420,
       },
       success: (res: any) => {
         resolve(res.data);
