@@ -7,7 +7,8 @@
     <div class="videoListBox">
       <!-- 轮播图 -->
       <u-swiper
-        height="150px"
+        :radius="6"
+        height="30vh"
         class="swiper"
         :list="videoList"
         keyName="image"
@@ -16,7 +17,7 @@
         circular
       ></u-swiper>
 
-      <div style="height: calc(100vh - 194px); overflow: auto">
+      <div style="height: calc(70vh - 44px); overflow: auto">
         <VideoList :videoList="videoList"></VideoList>
       </div>
     </div>
@@ -24,11 +25,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import VideoList from "@/components/VideoList/index.vue";
-
 import { hotVideo } from "@/apis/video";
-import { onMounted } from "vue";
 
 const videoList = ref<any[]>();
 const hotVideoList = ref<any>();
@@ -59,25 +58,13 @@ function tabsChange(item: any) {
     return { ...item, image: baseUrl + item.picture };
   });
 }
+
 onMounted(() => {
   getHotVideo();
 });
 </script>
 
 <style lang="scss" scoped>
-.swiper-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #fbfbfb;
-  background-color: #cee1fd;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .videoListBox {
   height: calc(100vh - 44px);
   width: 100%;

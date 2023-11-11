@@ -36,7 +36,6 @@ export const useDictStore = defineStore({
             });
           }
           this.dict = dictList;
-          console.log(100, this.dict);
         }
       });
     },

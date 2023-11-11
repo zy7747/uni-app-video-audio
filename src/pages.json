@@ -28,15 +28,15 @@
       }
     },
     {
-      "path": "pages/friend/index",
+      "path": "pages/shortVideo/index",
       "style": {
-        "navigationBarTitleText": "好友"
+        "navigationBarTitleText": "短视频"
       }
     },
     {
-      "path": "pages/setting/index",
+      "path": "pages/me/index",
       "style": {
-        "navigationBarTitleText": "设置"
+        "navigationBarTitleText": "我的"
       }
     },
     {
@@ -51,22 +51,33 @@
     "selectedColor": "#41a863",
     "borderStyle": "white",
     "backgroundColor": "#bfbfbf",
+    "height": "50px",
+    "fontSize": "10px",
+    "iconWidth": "24px",
     "list": [
       {
+        "iconPath": "static/images/tabBar/Elastic.png",
+        "selectedIconPath": "static/images/tabBar/Elastic.png",
         "pagePath": "pages/home/index",
         "text": "首页"
       },
       {
+        "iconPath": "static/images/tabBar/Memorandum.png",
+        "selectedIconPath": "static/images/tabBar/Memorandum.png",
         "pagePath": "pages/classify/index",
         "text": "分类"
       },
       {
-        "pagePath": "pages/friend/index",
-        "text": "工作台"
+        "iconPath": "static/images/tabBar/tiktok.png",
+        "selectedIconPath": "static/images/tabBar/tiktok.png",
+        "pagePath": "pages/shortVideo/index",
+        "text": "短视频"
       },
       {
-        "pagePath": "pages/setting/index",
-        "text": "设置"
+        "iconPath": "static/images/tabBar/Setting.png",
+        "selectedIconPath": "static/images/tabBar/Setting.png",
+        "pagePath": "pages/me/index",
+        "text": "我的"
       }
     ]
   },

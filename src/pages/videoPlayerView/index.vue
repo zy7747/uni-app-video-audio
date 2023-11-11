@@ -1,7 +1,18 @@
 <!--  -->
 <template>
   <div class="">
+    <!-- APP用上面这个 -->
     <view v-html="videoHtm(src)"></view>
+    <!-- 小程序用下面这个 -->
+    <!-- <div>
+      <video
+        controls
+        style="width: 100%; height: 30vh"
+        :src="src"
+        title="123"
+        cover
+      />
+    </div> -->
 
     <Episode @changeVideo="changeVideo" :episodeList="videoList"></Episode>
     <u-divider text="分割线" :dashed="true"></u-divider>
@@ -24,7 +35,6 @@ const baseUrl = import.meta.env.VITE_APP_BASE_API;
 
 const videoInfo = ref<any>({});
 const videoList = ref<any[]>([]);
-const videoPlayer: any = ref();
 const id = ref("");
 const src = ref<string>("");
 
