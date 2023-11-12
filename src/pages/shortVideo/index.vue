@@ -46,8 +46,6 @@ function getVideoPage() {
 }
 
 function videoHtm(src: any) {
-  console.log("---", current.value);
-
   return `<video controls="controls" class="shortVideo" style="object-fit: cover;" width="100%" height="500px"><source src="${src}" type="video/mp4"></video>`;
 }
 

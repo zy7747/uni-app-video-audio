@@ -8,7 +8,7 @@
       <!-- 轮播图 -->
       <u-swiper
         :radius="6"
-        height="30vh"
+        height="20vh"
         class="swiper"
         :list="videoList"
         keyName="image"
