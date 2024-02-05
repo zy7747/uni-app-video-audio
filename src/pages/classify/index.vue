@@ -2,7 +2,6 @@
 <template>
   <div class="">
     <TermsFilter></TermsFilter>
-    <!-- <audio style="text-align: left" controls></audio> -->
   </div>
 </template>
 

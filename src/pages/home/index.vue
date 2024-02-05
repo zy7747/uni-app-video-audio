@@ -7,17 +7,15 @@
     <div class="videoListBox">
       <!-- 轮播图 -->
       <u-swiper
-        :radius="6"
-        height="20vh"
-        class="swiper"
-        :list="videoList"
-        keyName="image"
         showTitle
         :autoplay="true"
+        height="25vh"
+        :list="videoList"
+        keyName="image"
         circular
-      ></u-swiper>
+      />
 
-      <div style="height: calc(70vh - 44px); overflow: auto">
+      <div style="height: calc(75vh - 44px); overflow: auto">
         <VideoList :videoList="videoList"></VideoList>
       </div>
     </div>
@@ -28,21 +26,19 @@
 import { ref, onMounted } from "vue";
 import VideoList from "@/components/VideoList/index.vue";
 import { hotVideo } from "@/apis/video";
+import { nextTick } from "vue";
 
-const videoList = ref<any[]>();
-const hotVideoList = ref<any>();
-const tabs = ref<any[]>();
-const baseUrl = import.meta.env.VITE_APP_BASE_API;
+const fileUrl = import.meta.env.VITE_APP_FILE_API;
+const videoList = ref<any[]>(); //视频列表
+const hotVideoList = ref<any>(); //所有热门视频
+const tabs = ref<any[]>(); //动态栏位
 
 //处理请求的视频数据
 function getHotVideo() {
   hotVideo().then((res: any) => {
     hotVideoList.value = res.data;
 
-    videoList.value = res.data.all.videoList.map((item: any) => {
-      return { ...item, image: baseUrl + item.picture };
-    });
-
+    //tabs栏位
     let tab = [];
 
     for (const key in res.data) {
@@ -50,12 +46,16 @@ function getHotVideo() {
     }
 
     tabs.value = tab;
+
+    nextTick(() => {
+      tabsChange({ key: "all" });
+    });
   });
 }
 
-function tabsChange(item: any) {
-  videoList.value = hotVideoList.value[item.key].videoList.map((item: any) => {
-    return { ...item, image: baseUrl + item.picture };
+function tabsChange(i: any) {
+  videoList.value = hotVideoList.value[i.key].videoList.map((item: any) => {
+    return { ...item, image: fileUrl + item.picture };
   });
 }
 

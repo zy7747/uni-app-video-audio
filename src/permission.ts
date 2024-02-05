@@ -1,4 +1,5 @@
 import { getToken } from "@/utils/auth";
+import { useUserStore } from "@/store/user";
 
 // 登录页面
 const loginPage = "/pages/login";
@@ -17,30 +18,36 @@ function checkWhite(url: string) {
 }
 
 // 页面跳转验证拦截器
-let list = ["navigateTo", "redirectTo", "reLaunch", "switchTab"];
 
-list.forEach((item) => {
-  uni.addInterceptor(item, {
-    invoke(to) {
-      console.log(to.url);
+uni.addInterceptor("navigateTo", {
+  invoke(to) {
+    //判断是否有TOKEN
+    if (getToken()) {
+      if (to.url === loginPage) {
+        uni.reLaunch({ url: "/" });
+        return false;
+      }
 
       return true;
+    } else {
+      //如果在白名单
+      if (checkWhite(to.url)) {
+        return true;
+      } else {
+        const userStore = useUserStore();
 
-      //   if (getToken()) {
-      //     if (to.url === loginPage) {
-      //       uni.reLaunch({ url: "/" });
-      //     }
-      //     return true;
-      //   } else {
-      //     if (checkWhite(to.url)) {
-      //       return true;
-      //     }
-      //     uni.reLaunch({ url: loginPage });
-      //     return false;
-      //   }
-    },
-    fail(err) {
-      console.log(err);
-    },
-  });
+        userStore.login({
+          loginType: "account",
+          account: "visitor",
+          password: "a123456",
+        });
+
+        return false;
+      }
+    }
+  },
+  fail(err) {
+    // 失败回调拦截
+    console.log(err);
+  },
 });

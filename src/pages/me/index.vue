@@ -8,7 +8,7 @@
       showTitle
       :autoplay="true"
       circular
-    ></u-swiper>
+    />
     <up-button type="primary" text="月落"></up-button>
   </div>
 </template>

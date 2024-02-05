@@ -26,6 +26,6 @@ defineProps({
 .videoList {
   height: 100%;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 49% 49%;
 }
 </style>

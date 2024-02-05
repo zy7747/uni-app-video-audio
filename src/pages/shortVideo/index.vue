@@ -16,7 +16,7 @@
           <view
             v-if="index >= current - 1 && index <= current + 1"
             v-html="videoHtm(item.url)"
-          ></view>
+          />
         </view>
       </swiper-item>
     </swiper>
@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { videoPage } from "@/apis/video";
-const baseUrl = import.meta.env.VITE_APP_BASE_API;
+const fileUrl = import.meta.env.VITE_APP_FILE_API;
 
 const queryParams = ref<any>({
   page: 1,
@@ -40,7 +40,7 @@ const current = ref<number>(0);
 function getVideoPage() {
   videoPage(queryParams.value).then((res: any) => {
     videoList.value = res.data.list.map((item: any) => {
-      return { ...item, url: baseUrl + "/" + item.url, title: item.videoName };
+      return { ...item, url: fileUrl + item.url, title: item.videoName };
     });
   });
 }

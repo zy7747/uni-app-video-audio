@@ -47,10 +47,10 @@
     }
   ],
   "tabBar": {
-    "color": "#000000",
-    "selectedColor": "#41a863",
+    "color": "#1a344c",
+    "selectedColor": "#e95420",
     "borderStyle": "white",
-    "backgroundColor": "#bfbfbf",
+    "backgroundColor": "#f0f0f0",
     "height": "50px",
     "fontSize": "10px",
     "iconWidth": "24px",
@@ -62,8 +62,8 @@
         "text": "首页"
       },
       {
-        "iconPath": "static/images/tabBar/Memorandum.png",
-        "selectedIconPath": "static/images/tabBar/Memorandum.png",
+        "iconPath": "static/images/tabBar/GameBot.png",
+        "selectedIconPath": "static/images/tabBar/GameBot.png",
         "pagePath": "pages/classify/index",
         "text": "分类"
       },
@@ -85,6 +85,6 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "我的APP",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#1a1b1e"
   }
 }
